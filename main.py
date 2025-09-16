@@ -61,7 +61,7 @@ def go(config: DictConfig):
                     "input_artifact":"sample.csv:latest",
                     "output_artifact":"clean_sample.csv",
                     "output_type":"clean_sample",
-                    "output_description":"some helpful description",
+                    "output_description":"cleaned dataset",
                     "min_price":config["etl"]["min_price"],
                     "max_price":config["etl"]["max_price"]
                 }
@@ -115,7 +115,19 @@ def go(config: DictConfig):
             # Implement here #
             ##################
 
-            pass
+            mlflow.run(
+                os.path.join(hydra.utils.get_original_cwd(),"src","train_random_forest"),
+                entry_point="main",
+                parameters={
+                    "trainval_artifact":"trainval_data.csv:latest",
+                    "val_size":config["modeling"]["val_size"],
+                    "random_seed":config["modeling"]["random_seed"],
+                    "stratify_by":config["modeling"]["stratify_by"],
+                    "rf_config":rf_config,
+                    "max_tfidf_features":config["modeling"]["max_tfidf_features"],
+                    "output_artifact":"random_forest_export"
+                }
+            )
 
         if "test_regression_model" in active_steps:
 
