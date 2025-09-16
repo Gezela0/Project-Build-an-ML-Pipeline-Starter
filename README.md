@@ -17,8 +17,8 @@ In this project you will build such a pipeline.
   * [Pre-existing components](#pre-existing-components)
 
 ## Links to Project
-https://github.com/Gezela0/Project-Build-an-ML-Pipeline-Starter.git
-https://wandb.ai/gezela-western-governors-university/nyc_airbnb?nw=nwusergezela
+1. https://github.com/Gezela0/Project-Build-an-ML-Pipeline-Starter.git
+2. https://wandb.ai/gezela-western-governors-university/nyc_airbnb?nw=nwusergezela
 
 ## Preliminary steps
 
